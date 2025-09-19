@@ -7,9 +7,15 @@ let resultsContainer = document.querySelector(".card-grid");
 let url = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
 
 async function fetchRecipes(query) {
+
+    searchBtn.textContent = "Searching...";
+    searchBtn.disabled = true
+
   try {
     const result = await fetch(`${url}${query}`);
     const data = await result.json();
+    searchBtn.textContent = "Search";
+    searchBtn.disabled = false;
 
     resultsContainer.innerHTML = "";
 
